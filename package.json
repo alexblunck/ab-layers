@@ -1,6 +1,6 @@
 {
   "name": "@blunck/ab-layers",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Animated layer component for AngularJs 1.6",
   "main": "lib/ab-layers.js",
   "scripts": {
