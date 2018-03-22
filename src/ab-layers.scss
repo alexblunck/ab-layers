@@ -1,0 +1,68 @@
+//
+// Component
+// ab-layers
+//
+
+ab-layers {
+    display: block;
+    overflow: hidden;
+}
+
+
+// Transform
+
+ab-layers
+.ab-layers-transform {
+    display: flex;
+    transition: transform .6s ease;
+
+    .ab-layers-transform-left,
+    .ab-layers-transform-center,
+    .ab-layers-transform-right {
+        flex-basis: 100%;
+        flex-shrink: 0;
+    }
+}
+
+
+// Layer
+
+ab-layer {
+    display: block;
+    width: 100%;
+}
+
+
+// Store
+
+ab-layers
+.ab-layers-store {
+    display: none;
+}
+
+
+// Flag - Center Content
+// Use flex positioning to center ab-layer content
+ab-layers.center-content {
+
+    &,
+    .ab-layers-transform {
+        height: 100%;
+    }
+
+    .ab-layers-transform-left,
+    .ab-layers-transform-center,
+    .ab-layers-transform-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    ab-layer {
+        flex: 0 0;
+    }
+
+    .ab-layer-content {
+        display: inline-block;
+    }
+}
