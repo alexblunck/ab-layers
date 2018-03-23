@@ -98,9 +98,7 @@ class abLayersCtrl {
             return false
         }
 
-        let refAttr = this.abLayerElems[this.index].attributes.ref
-
-        return refAttr && refs.includes(refAttr.value)
+        return refs.includes(this.getRef())
     }
 
     /**
@@ -198,7 +196,7 @@ class abLayersCtrl {
             this.transitioning = false
 
             if (this.onChange) {
-                this.onChange(this.index)
+                this.onChange(this.index, this.getRef())
             }
         }
 
@@ -249,6 +247,17 @@ class abLayersCtrl {
                 return elem.attributes.ref.value === ref
             }
         })
+    }
+
+    /**
+     * Return ref value of current layer.
+     *
+     * @return {String|null}
+     */
+    getRef() {
+        const refAttr = this.abLayerElems[this.index].attributes.ref
+
+        return refAttr ? refAttr.value : null
     }
 
     /**
