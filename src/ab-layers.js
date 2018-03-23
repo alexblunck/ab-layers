@@ -87,20 +87,20 @@ class abLayersCtrl {
 
     /**
      * Return true if the current layers ref attribute value
-     * mathes a given value.
+     * matches at least one of a variable amount of values.
      *
-     * @param  {String}  ref
+     * @param  {String} refs
      *
      * @return {Boolean}
      */
-    isRef(ref) {
+    isRef(...refs) {
         if (!this.abLayerElems) {
             return false
         }
 
         let refAttr = this.abLayerElems[this.index].attributes.ref
 
-        return refAttr && refAttr.value === ref
+        return refAttr && refs.includes(refAttr.value)
     }
 
     /**
