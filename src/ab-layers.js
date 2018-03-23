@@ -33,6 +33,7 @@ class abLayersCtrl {
             this.interface.hasPrev = this.hasPrev.bind(this)
             this.interface.hasNext = this.hasNext.bind(this)
             this.interface.isRef = this.isRef.bind(this)
+            this.interface.isTransitioning = this.isTransitioning.bind(this)
             this.interface.prev = this.prev.bind(this)
             this.interface.next = this.next.bind(this)
             this.interface.goTo = this.goTo.bind(this)
@@ -102,6 +103,15 @@ class abLayersCtrl {
         let refAttr = this.abLayerElems[this.index].attributes.ref
 
         return refAttr && refAttr.value === ref
+    }
+
+    /**
+     * Return true if transition is in progress.
+     *
+     * @return {Boolean}
+     */
+    isTransitioning() {
+        return this.transitioning
     }
 
     /**
