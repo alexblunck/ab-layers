@@ -3,8 +3,6 @@
  * ab-layers
  */
 
-const angular = window.angular
-
 import './ab-layers.scss'
 
 class abLayersCtrl {
@@ -196,7 +194,6 @@ class abLayersCtrl {
 
         setTimeout(handleTransitionEnd, 700)
 
-        // angular.element(this.transformElem).one('transitionend', handleTransitionEnd)
     }
 
     /**
