@@ -129,20 +129,22 @@ class abLayersCtrl {
     /**
      * Go to a layer with a specific ref attribute value.
      *
-     * @param {String} ref
+     * @param {String}  ref
+     * @param {Boolean} [animated]
      */
-    goToRef(ref) {
+    goToRef(ref, animated = true) {
         const index = this.getIndexForRef(ref)
 
-        this.goTo(index)
+        this.goTo(index, animated)
     }
 
     /**
      * Go to a specific index.
      *
-     * @param {Number} index
+     * @param {Number}  index
+     * @param {Boolean} [animated]
      */
-    goTo(index) {
+    goTo(index, animated = true) {
         if (this.transitioning) {
             return
         }
@@ -150,14 +152,16 @@ class abLayersCtrl {
         if (index >= 0 && index < this.layerCount) {
             this.prevIndex = this.index
             this.index = index
-            this.transition()
+            this.transition(animated)
         }
     }
 
     /**
      * Run transition to layer index.
+     *
+     * @param {Boolean} [animated]
      */
-    transition() {
+    transition(animated = true) {
         if (this.index === this.prevIndex) {
             return
         }
@@ -168,7 +172,9 @@ class abLayersCtrl {
         const prevLayerElem = this.abLayerElems[this.prevIndex]
         const targetLayerElem = this.abLayerElems[this.index]
 
-        this.enableAnimation()
+        if (animated) {
+            this.enableAnimation()
+        }
 
         if (this.index > this.prevIndex) {
             this.rightTransformElem.appendChild(targetLayerElem)
@@ -190,10 +196,14 @@ class abLayersCtrl {
             this.setTransformOffset(-1)
 
             this.transitioning = false
+
         }
 
-        setTimeout(handleTransitionEnd, 700)
-
+        if (animated) {
+            setTimeout(handleTransitionEnd, 700)
+        } else {
+            handleTransitionEnd()
+        }
     }
 
     /**
