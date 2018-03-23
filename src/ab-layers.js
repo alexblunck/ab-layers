@@ -197,6 +197,9 @@ class abLayersCtrl {
 
             this.transitioning = false
 
+            if (this.onChange) {
+                this.onChange(this.index)
+            }
         }
 
         if (animated) {
@@ -264,6 +267,7 @@ const template = `
         <div class="ab-layers-transform-center"></div>
         <div class="ab-layers-transform-right"></div>
     </div>
+
     <div class="ab-layers-store" ng-transclude></div>
 `
 
@@ -272,6 +276,7 @@ export default {
     template,
     bindings: {
         interface: '=?',
+        onChange: '<?',
         ref: '@?'
     },
     transclude: true
