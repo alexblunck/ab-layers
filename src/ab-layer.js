@@ -5,12 +5,14 @@
 
 class abLayerCtrl {
 
-    constructor() {
-        //
+    static get $inject() {
+        return ['$scope', '$element', '$attrs']
     }
 
-    $onInit() {
-        //
+    constructor($scope, $element, $attrs) {
+        if ($scope.$parent.$eval($attrs.hideIf)) {
+            $element.remove()
+        }
     }
 
 }
