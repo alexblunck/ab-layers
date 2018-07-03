@@ -164,6 +164,10 @@ class abLayersCtrl {
             return
         }
 
+        if (this.beforeChange) {
+            this.beforeChange(this.index, this.getRef())
+        }
+
         this.transitioning = true
 
         // Add target layer to transform
@@ -285,6 +289,7 @@ export default {
     template,
     bindings: {
         interface: '=?',
+        beforeChange: '<?',
         onChange: '<?',
         ref: '@?'
     },
